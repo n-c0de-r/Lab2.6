@@ -35,6 +35,14 @@ public class JulianDate {
 	}
 	
 	/**
+	 * Constructor, if only days are entered.
+	 * @param days	Days lived as a julian day number.
+	 */
+	public JulianDate (int days) {
+		value = days;
+	}
+	
+	/**
 	 * Getter to return the JulianDate number.
 	 * @return	Integer value for that date.
 	 */
@@ -42,8 +50,14 @@ public class JulianDate {
 		return value;
 	}
 	
+	/**
+	 * Returns the day of the week for that specific date.
+	 * @return	String with the weekday.
+	 */
 	public String getWeekday() {
+		//Calculate day value for each weekday
 		int w =(value % 7)+1;
+		
 		switch(w) {
 		case 0:
 			return "Monday";
@@ -64,4 +78,5 @@ public class JulianDate {
 			return "Not a day!";
 		}
 	}
+	
 }

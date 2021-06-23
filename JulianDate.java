@@ -11,9 +11,24 @@ public class JulianDate {
 
 	private int value;
 	
+	/**
+	 * Constructor of the class, takes dates and converts to a JulianDate number
+	 * 
+	 * @param year	Year of the given date
+	 * @param month	Month of the given date
+	 * @param day	Day of the given date
+	 */
 	public JulianDate (int year, int month, int day) {
 		//Using the formula from Wikipedia instead of one own
 		value = (1461 * (year + 4800 + (month - 14)/12))/4 +(367 * (month - 2 - 12 * ((month - 14)/12)))/12 - (3 * ((year + 4800 + (month - 14)/12)/100))/4 + day - 32075;
 		
-	} 
+	}
+	
+	/**
+	 * Getter to return the JulianDate number.
+	 * @return	Integer value for that date.
+	 */
+	public int getNumber() {
+		return value;
+	}
 }

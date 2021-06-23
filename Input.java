@@ -21,10 +21,12 @@ public class Input {
 	
 	private JulianDate current;
 	private JulianDate input;
+	private MetricDate metric;
 
 	public Input() {
 		
 		current = new JulianDate(y, m, d);
+		metric = new MetricDate();
 		
 		Scanner s = new Scanner(System.in);
 		String line = "";
@@ -64,15 +66,18 @@ public class Input {
 			}
 			
 			input = new JulianDate(year, month, day);
-			System.out.println("Your JulianDate number is: " +input.getNumber());
-			System.out.println("You are " + (current.getNumber() - input.getNumber()) + " days old.");
+			System.out.println("Your JulianDate number is: " + input.getNumber());
+			JulianDate daysLived = new JulianDate(current.getNumber() - input.getNumber());
+			System.out.println("You are " + daysLived.getNumber() + " days old.");
+			System.out.println("You are born on " + input.getWeekday());
+			
+			metric.toMetricDate(daysLived);
+			System.out.println("Your MetricDate birthday is: " + metric.getValue());
 		}
 		s.close();
 	}
 
 	public static void main(String[] args) {
-		
-
 		
 		Input i = new Input();
 

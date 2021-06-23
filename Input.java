@@ -64,7 +64,8 @@ public class Input {
 			}
 			
 			input = new JulianDate(year, month, day);
-			System.out.println(input);
+			System.out.println("Your JulianDate number is: " +input.getNumber());
+			System.out.println("You are " + (current.getNumber() - input.getNumber()) + " days old.");
 		}
 		s.close();
 	}

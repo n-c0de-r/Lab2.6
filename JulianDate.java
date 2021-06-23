@@ -19,9 +19,19 @@ public class JulianDate {
 	 * @param day	Day of the given date
 	 */
 	public JulianDate (int year, int month, int day) {
-		//Using the formula from Wikipedia instead of one own
-		value = (1461 * (year + 4800 + (month - 14)/12))/4 +(367 * (month - 2 - 12 * ((month - 14)/12)))/12 - (3 * ((year + 4800 + (month - 14)/12)/100))/4 + day - 32075;
+		//Using the formula from https://quasar.as.utexas.edu/BillInfo/JulianDatesG.html
+		int A = year/100;
+		int B = A/4;
+		int C = 2-A+B;
+		int E = (int) (365.25 * (year+4716));
+		int F = (int) (30.6001 * (month +1));
 		
+		value = (int) (C+day+E+F-1524.5);
+		
+		
+		if (value%100 == 0) {
+			System.out.println("Your lifetime is divisible by 100!");
+		}
 	}
 	
 	/**
@@ -30,5 +40,28 @@ public class JulianDate {
 	 */
 	public int getNumber() {
 		return value;
+	}
+	
+	public String getWeekday() {
+		int w =(value % 7)+1;
+		switch(w) {
+		case 0:
+			return "Monday";
+		case 1:
+			return "Tuesday";
+		case 2:
+			return "Wednesday";
+		case 3:
+			return "Thursday";
+		case 4:
+			return "Friday";
+		case 5:
+			return "Saturday";
+		case 6:
+			System.out.println("Your are a Sunday's Child! YAY!");
+			return "Sunday";
+		default:
+			return "Not a day!";
+		}
 	}
 }
